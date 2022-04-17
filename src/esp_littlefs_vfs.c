@@ -1303,7 +1303,7 @@ static void vfs_littlefs_seekdir(void *ctx, DIR *pdir, long offset) {
 
     while (dir->offset < offset) {
         struct dirent *out_dirent;
-        res = vfs_readdir_r(ctx, pdir, &dir->e, &out_dirent);
+        res = vfs_littlefs_readdir_r(ctx, pdir, &dir->e, &out_dirent);
         if (res != 0) {
             ESP_LOGE(TAG, "Error readdir_r");
             errno = EFAULT;
