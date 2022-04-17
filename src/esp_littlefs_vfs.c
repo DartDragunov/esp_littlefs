@@ -12,9 +12,6 @@
 
 #include "esp_log.h"
 
-// I don't really need this option
-#define CONFIG_VFS_SUPPORT_DIR
-
 static const char TAG[] = "esp_littlefs";
 
 // region helpers
@@ -107,7 +104,7 @@ static void free_vlfs(esp_littlefs_vlfs_t **vlfsArg) {
     vlfs_list_remove(vlfs);
 
     if (vlfs->conf.mount_point != NULL)
-        free(vlfs->conf.mount_point);
+        free((void*)vlfs->conf.mount_point);
     if (vlfs->lock != NULL)
         vSemaphoreDelete(vlfs->lock);
     free(vlfs);
@@ -1225,7 +1222,7 @@ static struct dirent *vfs_littlefs_readdir(void *ctx, DIR *pdir) {
     int res;
     struct dirent *out_dirent;
 
-    res = vfs_readdir_r(ctx, pdir, &dir->e, &out_dirent);
+    res = vfs_littlefs_readdir_r(ctx, pdir, &dir->e, &out_dirent);
     if (res != 0) return NULL;
     return out_dirent;
 }

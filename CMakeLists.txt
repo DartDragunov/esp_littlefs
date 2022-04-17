@@ -13,6 +13,7 @@ list(APPEND SOURCES
         src/esp_littlefs_abs.c
         src/littlefs/lfs.c
         src/littlefs/lfs_util.c
+        src/lfs_config.c
         )
 idf_component_register(
         SRCS ${SOURCES}
