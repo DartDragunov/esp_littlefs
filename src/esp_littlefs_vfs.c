@@ -14,6 +14,10 @@
 
 static const char TAG[] = "esp_littlefs";
 
+// fix CPP error on flush after write option check
+
+static int vfs_littlefs_fsync(void *ctx, int fd)
+
 // region helpers
 
 // region vlfs_list
