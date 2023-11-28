@@ -19,7 +19,7 @@ idf.py add-dependency joltwallet/littlefs==1.1.0
 2. As a submodule: In your project, add this as a submodule to your `components/` directory.
 
 ```
-git submodule add https://github.com/joltwallet/esp_littlefs.git
+git submodule add https://github.com/DartDragunov/esp_littlefs.git
 git submodule update --init --recursive
 ```
 
